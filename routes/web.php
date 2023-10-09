@@ -53,3 +53,4 @@ Route::get("/hubungi", function(){
 
 Route::redirect("/contact", "/hubungi");
 
+// Commit Ketiga
