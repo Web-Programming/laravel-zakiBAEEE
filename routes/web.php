@@ -54,3 +54,32 @@ Route::get("/hubungi", function(){
 Route::redirect("/contact", "/hubungi");
 
 // Commit Ketiga
+
+
+Route::get('/dosen', function(){
+    return view('dosen');
+});
+
+Route::get('/dosen/index', function(){
+    return view('dosen.index');
+});
+
+// Route::get('/fakultas', function(){
+//     {
+//     return view('fakultas.index', ["ilkom" => "Fakultas Ilmu Komputer Dan Rekayasa"]);
+// }
+// });
+
+// Route::get('/fakultas', function(){
+//     return view ('fakultas.index', ["fakultas" => ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ilmu Ekonomi"]]);
+// });
+
+Route::get('fakultas', function(){
+    // return view('fakultas.index')->with("fakultas", ["Fakultas Ilmu Komputer Dan Rekayasa", "Fakultas Ilmu Ekonomi"]);
+
+    //  return view('fakultas.index')->with("fakultas", ["Fakultas Ilmu Komputer Dan Rekayasa", "Fakultas Ilmu Ekonomi"]);
+
+    $kampus = "Universitas Multi Data Palembang";
+     $fakultas = ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ilmu Ekonomi"];
+     return view('fakultas.index', compact('fakultas', 'kampus'));
+});
