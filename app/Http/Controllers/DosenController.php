@@ -1,26 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
-class KurikulumController extends Controller
+class DosenController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(string $id)
+    public function index()
     {
-      echo " Halaman Index Kurikulum dengan id $id";
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        echo " Halaman Show Kurikulum";
+        $data = [
+            ['id' => 1, 'nama' => 'Nur Rachmat'],
+            ['id' => 2, 'nama' => 'Yohannes']
+        ];
     }
 
     /**
@@ -28,7 +21,7 @@ class KurikulumController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -37,15 +30,6 @@ class KurikulumController extends Controller
     public function show(string $id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        echo " Halaman Edit Kurikulum dengan id $id";
-
     }
 
     /**
