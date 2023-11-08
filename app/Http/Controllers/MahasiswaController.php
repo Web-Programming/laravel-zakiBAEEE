@@ -18,13 +18,13 @@ class MahasiswaController extends Controller
         dump($mhs);
 
         // Mass Assignment
-        // $mhs = Mahasiswa::insert(['nama' => 'Zaki', 'npm' => '2226250100', 'tempat_lahir => Somalia', 'tanggal_lahir' => 
+        // $mhs = Mahasiswa::insert(['nama' => 'Zaki', 'npm' => '2226250100', 'tempat_lahir => Somalia', 'tanggal_lahir' =>
         // date('Y-m-d')]);
-    
+
      dump($mhs);
     }
 
-       
+
 
     public function updateElq(){
         $mahasiswa = Mahasiswa::where('npm', '2226250100')->first();
@@ -43,5 +43,11 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', ['allMahasiswa' => $mahasiswa, 'kampus' => $kampus]);
     }
 
-    
+    public function allJoinElq(){
+        $kampus = "Universitas Multi Data Palembang";
+        $mahasiswas = Mahasiswa::has('prodi')->get();
+        return view('mahasiswa.index', )
+    }
+
+
 }
