@@ -106,3 +106,9 @@ Route::get("/mahasiswa/select-elq", [MahasiswaController::class, "selectElq"]);
 Route::get('/prodi/all-join-facade', [ProdiController::class, "allJoinFacade"]);
 
 // ......
+
+
+
+Route::get('/prodi/create', [ProdiController::class, 'create']);
+
+Route::get('prodi/join-elq', [ProdiController::class, 'allJoinElq'] );
