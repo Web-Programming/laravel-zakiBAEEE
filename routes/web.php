@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 // Halaman Profil
-Route::get("/profil", function(){
+Route::get("/profil", function () {
 
     return view("profil");
 });
@@ -44,14 +44,13 @@ Route::get("/profil", function(){
 // });
 
 // Route dengan parameter > 1
-Route::get("profil/{nama?}/{perkerjaan?}", function($nama = "Nur" , $pekerjaan = "mahasiswa"){
-echo "<h1> Halo Nama Saya $nama. Saya adalah $pekerjaan</h1>";
-
+Route::get("profil/{nama?}/{perkerjaan?}", function ($nama = "Nur", $pekerjaan = "mahasiswa") {
+    echo "<h1> Halo Nama Saya $nama. Saya adalah $pekerjaan</h1>";
 });
 
 
 // Route Redirect
-Route::get("/hubungi", function(){
+Route::get("/hubungi", function () {
     echo "<h1>Hubungi Kami</h1>";
 });
 
@@ -60,11 +59,11 @@ Route::redirect("/contact", "/hubungi");
 // Commit Ketiga
 
 
-Route::get('/dosen', function(){
+Route::get('/dosen', function () {
     return view('dosen');
 });
 
-Route::get('/dosen/index', function(){
+Route::get('/dosen/index', function () {
     return view('dosen.index');
 });
 
@@ -78,14 +77,14 @@ Route::get('/dosen/index', function(){
 //     return view ('fakultas.index', ["fakultas" => ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ekonomi dan Bisnis"]]);
 // });
 
-Route::get('fakultas', function(){
+Route::get('fakultas', function () {
     // return view('fakultas.index')->with("fakultas", ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ekonomi dan Bisnis"]);
 
     //  return view('fakultas.index')->with("fakultas", ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ekonomi dan Bisnis"]);
 
     $kampus = "Universitas Multi Data Palembang";
-     $fakultas = ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ekonomi dan Bisnis"];
-     return view('fakultas.index', compact('fakultas', 'kampus'));
+    $fakultas = ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ekonomi dan Bisnis"];
+    return view('fakultas.index', compact('fakultas', 'kampus'));
 });
 
 
@@ -112,4 +111,17 @@ Route::get('/prodi/all-join-facade', [ProdiController::class, "allJoinFacade"]);
 Route::get('/prodi/create', [ProdiController::class, 'create']);
 Route::get('/prodi/store', [ProdiController::class, 'store']);
 
-Route::get('prodi/join-elq', [ProdiController::class, 'allJoinElq'] );
+Route::get('prodi/join-elq', [ProdiController::class, 'allJoinElq']);
+
+
+// ROUTE UNTUK PROSES READ
+Route::get('/prodi', [ProdiController::class, 'index'])->name('prodi.index');
+Route::get('/prodi/{id}', [ProdiController::class, 'show'])->name('prodi.show');
+
+//ROUTE UNTUK PROSES UPDATE
+Route::get('/prodi/{prodi}/edit', [ProdiController::class, 'edit'])->name('prodi.edit');
+Route::patch('/prodi/{prodi}', [
+    ProdiController::class, 'update'
+])->name('prodi.update');
+
+
