@@ -56,6 +56,7 @@
                 <tbody>
                     @foreach ($prodis as $item)
                         <tr>
+                            <td><img src="{{asset('storage/'.$item->foto)}}" width="100px" alt=""></td>
                             <td>{{ $item->nama }}</td>
                             <td>
                                 <a href="{{ url('prodi/' . $item->id) }}" class="btn btn-warning">Detail</a>
