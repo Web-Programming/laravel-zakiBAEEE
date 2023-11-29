@@ -13,7 +13,7 @@ class ProdiController extends Controller
         // $kampus = "Universitas Multi Data Palembang";
         // return view('prodi.index')->with('kampus', $kampus);
         $prodis = Prodi::all();
-        return view('prodi.index') -> with('prodis', $prodis);
+        return view('prodi.index')->with('prodis', $prodis);
     }
 
     public function allJoinFacade()
@@ -44,39 +44,44 @@ class ProdiController extends Controller
         return view('prodi.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         //dump($request);
         //echo $request->nama;
         $validateData = $request->validate([
-            'nama'=> 'required|min:5|max:20',
-            'foto'=> 'required|file|image|max:5000'
+            'nama' => 'required|min:5|max:20',
+            'foto' => 'required|file|image|max:5000'
         ]);
         // dump($validateData);
         // echo $validateData['nama'];
 
         $prodi = new Prodi();
         $prodi->nama = $validateData['nama'];
+        $prodi->foto = $validateData['foto'];
         $prodi->save();
-        $request()->session()->flash('info', "Data Prodi $prodi->nama Berhasil Disimpan ke Database" );
-        return redirect()->route('prodi.create');
+        $request->session()->flash("info", "Data Prodi Berhasil Disimpan ke Database");
+        return redirect('prodi/create');
 
     }
 
-    public function show(Prodi $prodi){
+    public function show(Prodi $prodi)
+    {
         return view('prodi.show', ['prodi' => $prodi]);
 
     }
 
-    public function edit(Prodi $prodi){
-        return view('prodi.edit', ['prodi'=> $prodi]);
+    public function edit(Prodi $prodi)
+    {
+        return view('prodi.edit', ['prodi' => $prodi]);
     }
 
-    public function update(Prodi $prodi){
+    public function update(Prodi $prodi)
+    {
         $validateData = $prodi->validate([
-            'nama'=>'required|min:5|max:20'
+            'nama' => 'required|min:5|max:20'
         ]);
         Prodi::where('id', $prodi->id)->update($validateData);
         $prodi->session()->flash('info', 'Data Prodi $prodi->nama Berhasil Diubah');
-        return redirect()->route('prodi.index');
+        return redirect()->route('prodi.create');
     }
 }
